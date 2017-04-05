@@ -1,0 +1,27 @@
+#!/bin/bash
+
+file=$1
+name=$2
+
+if [ $# -ne 2 ]
+then
+	echo "incorrect no "
+	exit 1
+fi
+
+if [ -f "$file" ]
+then
+	echo "file found"
+else
+	echo "file not found"
+	exit 1
+fi
+
+if grep -i -w "$name" $file
+then
+	echo "username found"
+else
+	echo "username not found"
+	echo "$name">> $file
+	echo "name added"
+fi
